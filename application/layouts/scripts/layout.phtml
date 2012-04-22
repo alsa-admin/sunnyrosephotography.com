@@ -1,0 +1,64 @@
+<?php echo $this->doctype()?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <?php echo $this->headTitle(); ?>
+  <?php echo $this->headLink(); ?>
+  <?php echo $this->headScript(); ?>
+</head>
+<body>
+	<div id="wrapper" class="container">
+        <section id="login">
+            <div id="login-display">
+                <?php
+                    $auth = Zend_Auth::getInstance();
+                    if ($auth->hasIdentity()){
+                        $user = $auth->getStorage()->read();
+                ?>
+                    <span id="is-logged-in"><?php echo 'logged in as '. '<span class="logged-in-user">'. $this->escape($user->name).'<br />';
+                        if($this->escape($user->role) == 'Administrator'){ ?>
+                            <a href="/admin">Admin Panel</a>
+                       <?php }elseif($this->escape($user->role) == 'User') { ?>
+                            <a href="/user">Control Panel</a>
+                       <?php } echo '</span>'; ?></span>
+                <?php } else { ?>
+                    <span id="is-not-logged-in"><a href="">Login</a></span>
+                <?php }?>
+            </div>
+            <div id="login-form" style="display: none;">
+                <?php echo $this->action('login', 'index', 'admin') ?>
+            </div>
+            <?php if (Zend_Auth::getInstance()->hasIdentity()) {?>
+            <div id="logout-display">
+                <span><a href="/index/logout">Logout</a></span>
+            </div>
+            <?php } ?>
+        </section>
+		<header id="main-header">
+            <h1 id="site-title"><a href="/">Sunny Rose Photography</a></h1>
+            <h2 id="current-page-title"><?php echo $this->pageTitle; ?></h2>
+			<nav>
+                <a href="/about">about me</a>
+                <a href="/gallery">galleries</a>
+                <a href="/contact">contact</a>
+                <a href="/investment">investment</a>
+                <a href="/blog">blog</a>
+			</nav>
+		</header>
+		<section id="main-content">
+            <section id="main-content-wrapper">
+                <?php echo $this->layout()->content ?>
+                <section class="clearfix-20"></section>
+            </section>
+		</section>
+        <footer id="main-footer">
+            <section id="audio-player">
+                <ul>
+                    <li><img src="/images/site-images/player/play-pause.png" alt="play - pause" /></li>
+                    <li><img src="/images/site-images/player/vol-slider-bg.png" alt="volume slider" /></li>
+                </ul>
+            </section>
+        </footer>
+	</div>
+</body>
+</html>

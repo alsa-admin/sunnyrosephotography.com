@@ -1,0 +1,17 @@
+<ul id="list-id-<?php echo $this->id; ?>" class="photo-listing">
+    <li><input type="checkbox" id="list-photo-selected"></li>
+    <li style="display: none"><input type="text" id="img_id" value="<?php echo $this->id; ?>"></li>
+    <li style="display: none"><input type="text" id="img_id_existing" value="<?php echo $this->id; ?>"></li>
+    <li style="display: none"><input type="text" id="file_name" value="<?php echo $this->file_name; ?>"></li>
+    <li style="display: none"><input type="text" id="file_name_existing" value="<?php echo $this->file_name; ?>"></li>
+    <li><input type="text" id="image_title" value="<?php echo $this->image_title; ?>"></li>
+    <li style="display: none"><input type="text" id="image_title_existing" value="<?php echo $this->image_title; ?>"></li>
+    <li><input type="text" id="album_name" value="<?php echo $this->album_name; ?>"></li>
+    <li style="display: none"><input type="text" id="album_name_existing" value="<?php echo $this->album_name; ?>"></li>
+    <li><input type="text" id="category_name" value="<?php echo $this->category ?>"></li>
+    <li style="display: none"><input type="text" id="category_name_existing" value="<?php echo $this->category ?>"></li>
+    <li><input type="checkbox" name="is_thumbnail" id="is_thumbnail" value="<?php  echo $this->isThumbnail; ?>"></li>
+    <li><a href="#" id="update-this-photo">Update</a></li>
+    <li><a href="#" id="delete-this-photo">Delete</a></li>
+</ul>
+    
